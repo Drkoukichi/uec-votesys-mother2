@@ -1,9 +1,18 @@
-let qsum=0
-
-while(pins.digitalReadPin(DigitalPin.P10)==1){
-    
+radio.onReceivedNumber(function (receivedNumber) {
+    receive = receivedNumber
+})
+let receive = 0
+radio.setGroup(80)
+receive = 0
+let qsum = 0
+basic.showString("Hello!")
+while (receive == 0) {
+    basic.pause(5000)
 }
-
-qsum = pins.i2cReadNumber(0, NumberFormat.Int8LE)
-
-basic.showNumber(qsum)
+basic.clearScreen()
+qsum = receive
+radio.setGroup(50)
+while (receive != 100) {
+    basic.showNumber(qsum)
+    radio.sendNumber(qsum)
+}
