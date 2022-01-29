@@ -12,7 +12,7 @@ while (receive == 0) {
 basic.clearScreen()
 qsum = receive
 radio.setGroup(50)
-while (receive != 100) {
+while (true) {
     basic.showNumber(qsum)
     radio.sendNumber(qsum)
 }
